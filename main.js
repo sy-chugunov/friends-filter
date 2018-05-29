@@ -151,7 +151,6 @@ function storeFriends(allFriendsArray) {
 
     // Manage friend lists
     function addToArray(data, array) {
-        debugger;
         let friend = {};
         friend.id = document.getElementById(data).id
         friend.first_name = document.getElementById(data).dataset.firstname;
@@ -163,7 +162,6 @@ function storeFriends(allFriendsArray) {
     function removeFromArray(data, array) {
         for (let i = 0; i < array.length; i++) {
             if (array[i].id === data) {
-                debugger;
                 array = array.splice(i, 1);
             }
         }
@@ -201,7 +199,7 @@ function storeFriends(allFriendsArray) {
         await load();
         await auth();
 
-        friends = await callApi('friends.get', { 'fields': 'photo_50', 'v': 5.78 });
+        friends = await callApi('friends.get', { 'fields': 'photo_50' });
         storeFriends(friends.items);
     } catch (e) {
         console.error('Exception raised', e);
